@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apps — GT-IT</title>
-  <meta name="description" content="GT-IT" />
+  <title>A Team Wedding — Wedding Day App</title>
+  <meta name="description" content="A Team Wedding is a wedding day companion app for all guests — near and far. Share moments, take the couples quiz, and vote for your favourite songs." />
+
+  <!-- App store meta tags -->
+  <meta property="og:title" content="A Team Wedding" />
+  <meta property="og:description" content="A wedding day companion app for all guests — near and far. Share moments, take the couples quiz, and vote for your favourite songs." />
+  <meta property="og:type" content="website" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,103 +28,157 @@
       align-items: center;
       justify-content: space-between;
     }
-    nav .brand {
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul a {
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
+    nav .brand { color: #fff; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
     nav ul a:hover { color: #fff; }
 
     /* ── Hero ── */
     .hero {
       background: linear-gradient(135deg, #7c4fe0 0%, #4a2d9c 60%, #3a1f7a 100%);
       color: #fff;
+      padding: 4rem 1.5rem 5rem;
       text-align: center;
-      padding: 4rem 1.5rem 3.5rem;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.75rem; }
-    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      top: -150px; right: -100px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      bottom: -100px; left: -80px;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 
-    /* ── Posts grid ── */
-    .posts-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
+    .app-icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(145deg, #fff 0%, #e8d8ff 100%);
+      border-radius: 22px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     }
-    .posts-section h2 {
-      font-size: 1.5rem;
+
+    .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 0.5rem; }
+    .hero .tagline {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.82;
+      line-height: 1.7;
       margin-bottom: 2rem;
-      color: #4a2d9c;
     }
-    .posts-grid {
+
+    /* ── Store badges ── */
+    .store-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.4);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .badge:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .badge .badge-icon { font-size: 1.5rem; }
+    .badge-sub { display: block; font-size: 0.7rem; font-weight: 400; opacity: 0.85; }
+    .badge-label { display: block; font-size: 1rem; font-weight: 700; line-height: 1; }
+    .badge.coming-soon { opacity: 0.6; cursor: default; pointer-events: none; }
+
+    /* ── Features ── */
+    .features {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.75rem;
     }
-
-    /* ── Post card ── */
-    .post-card {
+    .feature-card {
       background: #fff;
-      border-radius: 12px;
-      padding: 1.75rem;
-      box-shadow: 0 2px 12px rgba(74,45,156,0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .post-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(74,45,156,0.14);
-    }
-    .post-meta {
-      font-size: 0.8rem;
-      color: #8b7ec8;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .post-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-      color: #1a1a2e;
-    }
-    .post-card p {
-      color: #555;
-      font-size: 0.93rem;
-      line-height: 1.6;
-      flex: 1;
-    }
-    .read-more {
-      display: inline-block;
-      margin-top: 1.2rem;
-      color: #6c3fc5;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .read-more:hover { color: #4a2d9c; text-decoration: underline; }
-
-    /* ── Empty state ── */
-    .empty-state {
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 2px 16px rgba(74,45,156,0.08);
       text-align: center;
-      padding: 3rem;
-      color: #8b7ec8;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .empty-state p { font-size: 1rem; }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(74,45,156,0.14);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 { font-size: 1.15rem; color: #4a2d9c; margin-bottom: 0.6rem; }
+    .feature-card p { color: #555; font-size: 0.95rem; line-height: 1.6; }
+
+    /* ── About section ── */
+    .about {
+      background: linear-gradient(135deg, #f0eeff 0%, #e8d8ff 100%);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+    .about-inner { max-width: 620px; margin: 0 auto; }
+    .about h2 { font-size: 1.6rem; color: #4a2d9c; margin-bottom: 1rem; }
+    .about p { color: #444; line-height: 1.75; font-size: 1rem; }
+
+    /* ── Support ── */
+    .support {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+    .support h2 { font-size: 1.4rem; color: #4a2d9c; margin-bottom: 0.75rem; }
+    .support p { color: #555; line-height: 1.7; }
+    .support a { color: #6c3fc5; text-decoration: none; font-weight: 600; }
+    .support a:hover { text-decoration: underline; }
+    .privacy-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #6c3fc5;
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .privacy-link:hover { background: #4a2d9c; }
 
     /* ── Footer ── */
     footer {
@@ -134,66 +194,100 @@
 
     @media (max-width: 600px) {
       nav ul { gap: 1rem; }
+      .store-badges { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="../index.html" class="brand">GT-IT</a>
+    <a href="../index.html" class="brand">GT-IT Consulting</a>
     <ul>
       <li><a href="../index.html">Home</a></li>
-      <li><a href="../about-us/index.html">About Us</a></li>
       <li><a href="#">Apps</a></li>
+      <li><a href="../blog/index.html">Blog</a></li>
       <li><a href="../contact-us/index.html">Contact</a></li>
     </ul>
   </nav>
 
   <div class="hero">
-    <h1>Apps</h1>
-    <p>A Team Wedding - A gift for friends</p>
+    <div class="hero-inner">
+      <div class="app-icon">💍</div>
+      <h1>A Team Wedding</h1>
+      <p class="tagline">The wedding party in your pocket</p>
+      <p>
+        A wedding day companion for all guests — whether you're in the front row
+        or watching from across the world. Share moments as they happen, take the
+        couple's quiz, and vote for the songs you want to hear on the dance floor.
+      </p>
+      <div class="store-badges">
+        <a href="#coming-soon" class="badge coming-soon" aria-label="Download on the App Store">
+          <span class="badge-icon">🍎</span>
+          <span>
+            <span class="badge-sub">Download on the</span>
+            <span class="badge-label">App Store</span>
+          </span>
+        </a>
+        <a href="#coming-soon" class="badge coming-soon" aria-label="Get it on Google Play">
+          <span class="badge-icon">▶</span>
+          <span>
+            <span class="badge-sub">Get it on</span>
+            <span class="badge-label">Google Play</span>
+          </span>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <section class="posts-section">
-    <h2>Latest Posts</h2>
-
-    <div class="posts-grid">
-
-      <!--
-        ════════════════════════════════════════════════
-        HOW TO ADD A NEW POST:
-        1. Copy one of the <article class="post-card"> blocks below
-        2. Update the date, title, excerpt, and the href in the "Read more" link
-        3. The href should point to your new post file, e.g. href="my-post-title.html"
-        4. Save this file and upload it to GitHub
-        ════════════════════════════════════════════════
-
-        EXAMPLE CARD — remove this comment block and uncomment the card below
-        when you're ready to add your first post:
-
-      <article class="post-card">
-        <div class="post-meta">March 4, 2026</div>
-        <h3>Your Post Title Goes Here</h3>
-        <p>A short 2–3 sentence summary of what the post is about. Keep it punchy so readers want to click through.</p>
-        <a class="read-more" href="your-post-filename.html">Read more →</a>
-      </article>
-
-      -->
-
-      <div class="empty-state">
-        <p>Posts coming soon — check back shortly!</p>
-      </div>
-
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">📸</div>
+      <h3>Share the Moments</h3>
+      <p>Upload and view photos and videos in real time, so everyone — near and far — experiences the day together.</p>
     </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3>The Couple's Quiz</h3>
+      <p>How well do you know the happy couple? Test yourself with a fun quiz and see how you stack up against other guests.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎵</div>
+      <h3>Vote for Songs</h3>
+      <p>Have your say on the dance floor playlist. Vote for your favourite tracks and help shape the celebration.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-inner">
+      <h2>Made with love</h2>
+      <p>
+        A Team Wedding was developed by GT-IT as a personal gift for a very special couple.
+        Built to bring all their guests together — whether in the room or streaming from
+        the other side of the world — it turns a single day into a shared experience everyone
+        can be part of.
+      </p>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="support" id="support">
+    <h2>Support</h2>
+    <p>
+      Have a question or need help with the app? Reach out to us at
+      <a href="mailto:info@gt-it.au">info@gt-it.au</a> and we'll get back to you as soon as possible.
+    </p>
+    <a class="privacy-link" href="privacy.html">Privacy Policy</a>
   </section>
 
   <footer>
     <div class="footer-links">
       <a href="../index.html">Home</a>
-      <a href="../about-us/index.html">About Us</a>
+      <a href="#">Apps</a>
+      <a href="../blog/index.html">Blog</a>
       <a href="../contact-us/index.html">Contact Us</a>
-      <a href="../terms-conditions/index.html">Terms &amp; Conditions</a>
-      <a href="../privacy-policy/index.html">Privacy Policy</a>
+      <a href="privacy.html">Privacy Policy</a>
     </div>
     <p>GT-IT Pty Ltd IT Consulting &nbsp;|&nbsp; <a href="mailto:info@gt-it.au">info@gt-it.au</a></p>
   </footer>
