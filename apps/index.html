@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — GT-IT Consulting</title>
+  <meta name="description" content="Technology insights and tips from GT-IT Consulting. Plain English IT for small and medium business." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e;
+      background: #f8f8fc;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: linear-gradient(135deg, #6c3fc5 0%, #4a2d9c 100%);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .brand {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #7c4fe0 0%, #4a2d9c 60%, #3a1f7a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1.5rem 3.5rem;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.75rem; }
+    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+
+    /* ── Posts grid ── */
+    .posts-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    .posts-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #4a2d9c;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    /* ── Post card ── */
+    .post-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(74,45,156,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(74,45,156,0.14);
+    }
+    .post-meta {
+      font-size: 0.8rem;
+      color: #8b7ec8;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .post-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+      color: #1a1a2e;
+    }
+    .post-card p {
+      color: #555;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .read-more {
+      display: inline-block;
+      margin-top: 1.2rem;
+      color: #6c3fc5;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .read-more:hover { color: #4a2d9c; text-decoration: underline; }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: #8b7ec8;
+    }
+    .empty-state p { font-size: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: linear-gradient(135deg, #5c2fc5 0%, #3a1f7a 100%);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.88rem;
+    }
+    footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer .footer-links { margin-bottom: 0.75rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="brand">GT-IT Consulting</a>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about-us/index.html">About Us</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="../contact-us/index.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Blog</h1>
+    <p>Plain English technology insights for small and medium business.</p>
+  </div>
+
+  <section class="posts-section">
+    <h2>Latest Posts</h2>
+
+    <div class="posts-grid">
+
+      <!--
+        ════════════════════════════════════════════════
+        HOW TO ADD A NEW POST:
+        1. Copy one of the <article class="post-card"> blocks below
+        2. Update the date, title, excerpt, and the href in the "Read more" link
+        3. The href should point to your new post file, e.g. href="my-post-title.html"
+        4. Save this file and upload it to GitHub
+        ════════════════════════════════════════════════
+
+        EXAMPLE CARD — remove this comment block and uncomment the card below
+        when you're ready to add your first post:
+
+      <article class="post-card">
+        <div class="post-meta">March 4, 2026</div>
+        <h3>Your Post Title Goes Here</h3>
+        <p>A short 2–3 sentence summary of what the post is about. Keep it punchy so readers want to click through.</p>
+        <a class="read-more" href="your-post-filename.html">Read more →</a>
+      </article>
+
+      -->
+
+      <div class="empty-state">
+        <p>Posts coming soon — check back shortly!</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../about-us/index.html">About Us</a>
+      <a href="../contact-us/index.html">Contact Us</a>
+      <a href="../terms-conditions/index.html">Terms &amp; Conditions</a>
+      <a href="../privacy-policy/index.html">Privacy Policy</a>
+    </div>
+    <p>GT-IT Pty Ltd IT Consulting &nbsp;|&nbsp; <a href="mailto:info@gt-it.au">info@gt-it.au</a></p>
+  </footer>
+
+</body>
+</html>
